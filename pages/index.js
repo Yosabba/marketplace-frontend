@@ -40,28 +40,28 @@ export default function Home() {
     });
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
 
-    try {
-      toast.success("Signed in", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+  //   try {
+  //     toast.success("Signed in", {
+  //       position: toast.POSITION.TOP_RIGHT,
+  //     });
 
-      setIsUserLoggedIn(true);
+  //     setIsUserLoggedIn(true);
 
-      setFormData({
-        email: "",
-        password: "",
-      });
-    } catch ({ message }) {
-      console.log(`${message}`);
+  //     setFormData({
+  //       email: "",
+  //       password: "",
+  //     });
+  //   } catch ({ message }) {
+  //     console.log(`${message}`);
 
-      toast.error("Incorrect email or password", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-    }
-  };
+  //     toast.error("Incorrect email or password", {
+  //       position: toast.POSITION.TOP_RIGHT,
+  //     });
+  //   }
+  // };
 
   return (
     <main className="pt-12">
