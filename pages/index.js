@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Zoom } from "react-toastify";
+import Forms from '../components/Forms';
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -119,7 +120,7 @@ export default function Home() {
         </form>
       </section>
 
-      <section className="flex flex-row justify-center pb-4">
+      {/* <section className="flex flex-row justify-center pb-4">
         <div className=" border-b-2 w-1/4 border-gray-300 self-center "></div>
         <p className="px-4 self-center text-gray-500">or</p>
         <div className="border-b-2 w-1/4 border-gray-300 self-center"></div>
@@ -152,7 +153,8 @@ export default function Home() {
             className="cursor-pointer"
           ></Image>
         </div>
-      </section>
+      </section> */}
+      <Forms />
     </main>
   );
 }
