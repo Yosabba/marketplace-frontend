@@ -1,12 +1,38 @@
 const CreateHouse = () => {
   return (
     <div className="flex flex-col justify-center items-center">
-      <h1>Create House</h1>
       <form className="flex flex-col justify-center items-center">
-        <label>Address</label>
-        <input type="text" name="address" />
+        <label>Bedrooms</label>
+        <input
+          className="border-2 border-slate-100 rounded-lg"
+          type="number"
+          name="price"
+        />
+        <label>Bathrooms</label>
+        <input
+          className="border-2 border-slate-100 rounded-lg"
+          type="text"
+          name="price"
+        />
         <label>Price</label>
-        <input type="text" name="price" />
+        <input
+          className="border-2 border-slate-100 rounded-lg"
+          type="text"
+          name="price"
+        />
+        <label>Address</label>
+        <input
+          className="border-2 border-slate-100 rounded-lg"
+          type="text"
+          name="price"
+        />
+        <label>Furnished</label>
+        <input
+          className="border-2 border-slate-100 rounded-lg"
+          type="text"
+          name="price"
+        />
+        
       </form>
     </div>
   );
