@@ -36,15 +36,6 @@ export default function Home({ data }) {
 
       <section className="flex mt-4 mb-4 flex-col items-center">
         <h1 className=" text-6xl font-semibold mb-20">Home Page</h1>
-
-        <div>
-          houses for sell here
-        </div>
-
-        <div>
-          houses for rent her
-        </div>
-
         <div className={homeContainer}></div>
       </section>
     </main>
