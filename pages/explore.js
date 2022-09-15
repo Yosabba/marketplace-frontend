@@ -2,11 +2,6 @@ import Head from "next/head";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import Router from "next/router";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { Zoom } from "react-toastify";
 
 export const getStaticProps = async () => {
   const response = await axios.get("http://localhost:5000/houses");
@@ -29,14 +24,9 @@ export default function Explore() {
       </Head>
 
       <section className="flex mt-4 mb-4 flex-col items-center">
-        <h1 className=" text-6xl font-semibold mb-20">Welcome Back!2</h1>
+        <h1 className=" text-6xl font-semibold mb-20">Explore Page</h1>
 
-        <div>jnvjf</div>
-        <input
-          type="text"
-          placeholder="Type here"
-          className="input input-bordered input-primary w-full max-w-xs"
-        />
+        <div>random text</div>
       </section>
     </main>
   );
