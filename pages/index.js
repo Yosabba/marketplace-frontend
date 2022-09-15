@@ -42,7 +42,7 @@ export default function Home({ data }) {
         </div>
 
         <div>
-          houses for rent here
+          houses for rent her
         </div>
 
         <div className={homeContainer}></div>
