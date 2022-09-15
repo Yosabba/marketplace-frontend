@@ -35,9 +35,9 @@ export default function Home({ data }) {
       </Head>
 
       <section className="flex mt-4 mb-4 flex-col items-center">
-        <h1 className=" text-6xl font-semibold mb-20">Welcome Back!2</h1>
+        <h1 className=" text-6xl font-semibold mb-20">Home Page</h1>
 
-        <div className={homeContainer}>jnvjf</div>
+        <div className={homeContainer}></div>
       </section>
     </main>
   );
