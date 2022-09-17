@@ -20,9 +20,7 @@ export default function Home({ data }) {
   const [houses, setHouses] = useState(data);
 
   const homeContainer =
-    "bg-[url('../public/house-community.jpg')] bg-cover w-full h-80 ";
-
-  const formInputStyle = "border-slate-200 border-2 rounded-xl w-72 my-2 py-2 indent-2";
+    "bg-[url('../public/house-community.jpg')] bg-cover w-full h-[65vh] ";
 
   return (
     <main className="pt-12">
@@ -34,7 +32,7 @@ export default function Home({ data }) {
 
       <section className="flex mt-4 mb-4 flex-col items-center ">
         <div className={homeContainer}>
-          <div className="bg-white h-screen w-80 ml-12 rounded-lg">
+          <div className="bg-white h-[100vh] w-80 ml-12 rounded-lg">
             <h1 className="text-2xl font-medium mb-6 ml-2">
               Find your next home or property
             </h1>
