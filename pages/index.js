@@ -2,11 +2,8 @@ import Head from "next/head";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import Router from "next/router";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { Zoom } from "react-toastify";
+import { useState } from "react";
+import HomeForm from "../components/HomeForm";
 
 export const getStaticProps = async () => {
   const response = await axios.get("http://localhost:5000/houses");
@@ -24,7 +21,7 @@ export default function Home({ data }) {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   const homeContainer =
-    "bg-[url('../public/house-community.jpg')] bg-cover w-full h-96 ";
+    "bg-[url('../public/house-community.jpg')] bg-cover w-full h-80 ";
 
   const formInputStyle = "border-slate-200 border-2 rounded-xl w-72 my-2 py-2 indent-2";
 
@@ -38,17 +35,11 @@ export default function Home({ data }) {
 
       <section className="flex mt-4 mb-4 flex-col items-center ">
         <div className={homeContainer}>
-          <div className="bg-white h-72 w-80 ml-12 rounded-lg">
+          <div className="bg-white h-screen w-80 ml-12 rounded-lg">
             <h1 className="text-2xl font-medium mb-6 ml-2">
               Find your next home or property
             </h1>
-            <form className="flex flex-col ml-2">
-              <label>hbbhvf</label>
-              <input className={formInputStyle} type="text" />
-              <input className={formInputStyle} type="text" />
-              <label for="points">Points (between 0 and 10):</label>
-              <input className="w-40 " type="range" id="points" name="points" min="0" max="10" />
-            </form>
+            <HomeForm />
           </div>
         </div>
       </section>
