@@ -18,7 +18,6 @@ export const getStaticProps = async () => {
 
 export default function Home({ data }) {
   const [houses, setHouses] = useState(data);
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   const homeContainer =
     "bg-[url('../public/house-community.jpg')] bg-cover w-full h-80 ";
