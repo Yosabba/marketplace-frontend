@@ -23,8 +23,10 @@ export default function Home({ data }) {
   const [houses, setHouses] = useState(data);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
-  const homeContainer = "flex flex-row items-center justify-center";
+  const homeContainer =
+    "bg-[url('../public/house-community.jpg')] bg-cover w-full h-96 ";
 
+  const formInputStyle = "border-slate-200 border-2 rounded-xl w-72 my-2 py-2 indent-2";
 
   return (
     <main className="pt-12">
@@ -34,9 +36,21 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className="flex mt-4 mb-4 flex-col items-center">
-        <h1 className=" text-6xl font-semibold mb-20">Home Page</h1>
-        <div className={homeContainer}></div>
+      <section className="flex mt-4 mb-4 flex-col items-center ">
+        <div className={homeContainer}>
+          <div className="bg-white h-72 w-80 ml-12 rounded-lg">
+            <h1 className="text-2xl font-medium mb-6 ml-2">
+              Find your next home or property
+            </h1>
+            <form className="flex flex-col ml-2">
+              <label>hbbhvf</label>
+              <input className={formInputStyle} type="text" />
+              <input className={formInputStyle} type="text" />
+              <label for="points">Points (between 0 and 10):</label>
+              <input className="w-40 " type="range" id="points" name="points" min="0" max="10" />
+            </form>
+          </div>
+        </div>
       </section>
     </main>
   );
