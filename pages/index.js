@@ -32,7 +32,7 @@ export default function Home({ data }) {
         <div className="bg-[url('../public/house-community.jpg')] bg-cover w-full h-[65vh]">
           <div className="flex flex-col items-center justify-center h-full">
             <h1 className="text-5xl font-bold text-white">House Marketplace</h1>
-            <p className="text-2xl text-white">
+            <p className="text-2xl text-white mb-6">
               Find your dream house in a few clicks
             </p>
             <HomeForm />
@@ -40,7 +40,7 @@ export default function Home({ data }) {
         </div>
       </section>
 
-      <section className="grid grid-cols-auto-fit mx-10 pb-8">
+      <section className="grid grid-cols-auto-fit justify-items-center mx-10 pb-8">
         <HomeCards
           name="Rent a house"
           desc="Find a new place to live with a ton of listings and options. You won't
