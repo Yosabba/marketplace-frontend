@@ -8,7 +8,7 @@ const Header = () => {
     "mx-2 capitalize transition duration-300 ease-in-out hover:text-gray-300 text-lg";
 
   const btnStyle =
-    "bg-[#080357] p-2 rounded-lg text-slate-200 ml-4 transition duration-500 ease-in-out hover:bg-slate-200 ";
+    "bg-blue-700 p-2 rounded-lg text-slate-200 ml-4 transition duration-500 ease-in-out hover:bg-blue-800 ";
 
   return (
     <header className={headerWrapper}>
@@ -29,6 +29,9 @@ const Header = () => {
         </Link>
         <Link href="/">
           <a className={linkStyle}>Sell</a>
+        </Link>
+        <Link href="/">
+          <a className={linkStyle}>Explore</a>
         </Link>
         <Link href="/signIn">
           <button className={btnStyle}>Sign In</button>

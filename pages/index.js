@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import HomeForm from "../components/HomeForm";
+import HomeCards from "../components/HomeCards";
 
 export const getStaticProps = async () => {
   const response = await axios.get("http://localhost:5000/houses");
@@ -19,9 +20,6 @@ export const getStaticProps = async () => {
 export default function Home({ data }) {
   const [houses, setHouses] = useState(data);
 
-  const homeContainer =
-    "bg-[url('../public/house-community.jpg')] bg-cover w-full h-[65vh] ";
-
   return (
     <main className="pt-12">
       <Head>
@@ -30,15 +28,42 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className="flex mt-4 mb-4 flex-col items-center ">
-        <div className={homeContainer}>
-          <div className="bg-white h-[100vh] w-80 ml-12 rounded-lg">
+      <section className="flex mt-4 pb-20 flex-col items-center ">
+        <div className="bg-[url('../public/house-community.jpg')] bg-cover w-full h-[65vh]">
+          <div className="bg-white h-[50vh] ml-12 rounded-lg my-8">
             <h1 className="text-2xl font-medium mb-6 ml-2">
               Find your next home or property
             </h1>
             <HomeForm />
           </div>
         </div>
+      </section>
+
+      <section className="grid grid-cols-auto-fit mx-10 pb-8">
+        <HomeCards
+          name="Rent a house"
+          desc="Find a new place to live with a ton of listings and options. You won't
+          find these anywhere else."
+          btnText="Find Rentals"
+          imgUrl="/house-2.jpg"
+          pathUrl="/for_rent"
+        />
+        <HomeCards
+          name="Buy a house"
+          desc="Ready for your dream home? Search for the perfect place to call your
+          own."
+          btnText="Browse Houses"
+          imgUrl="/house-3.jpg"
+          pathUrl="/for_sale"
+        />
+        <HomeCards
+          name="Sell a house"
+          desc="Find a new place to live with a ton of listings and options. You won't
+          find these anywhere else."
+          btnText="Sell a Home"
+          imgUrl="/house-with-yard-sign-sale.jpg"
+          pathUrl="/for_sale"
+        />
       </section>
     </main>
   );
