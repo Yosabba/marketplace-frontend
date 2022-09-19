@@ -7,9 +7,9 @@ import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Zoom } from "react-toastify";
-import Forms from "../components/Forms";
+import Forms from "../components/forms/CreateHouseForm";
 
-export default function Home() {
+export default function SignIn() {
   const [data, setData] = useState([]);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [isFormEmpty, setIsFormEmpty] = useState(true);
@@ -154,7 +154,6 @@ export default function Home() {
           ></Image>
         </div>
       </section> */}
-      <Forms />
     </main>
   );
 }
