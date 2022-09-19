@@ -3,7 +3,7 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import HomeForm from "../components/HomeForm";
+import HomeForm from "../components/forms/HomeForm";
 import HomeCards from "../components/HomeCards";
 
 export const getStaticProps = async () => {
