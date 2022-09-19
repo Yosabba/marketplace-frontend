@@ -99,19 +99,19 @@ export default function SignIn() {
             value={formData.password}
             id="password"
           />
-          <Link href={"/forgotPassword"}>
+          <Link href={"/forgotPass"}>
             <span className="ml-40 text-sm pt-2 hover:cursor-pointer text-gray-400 hover:text-gray-800 transition duration-300">
               Forgot Password?
             </span>
           </Link>
 
-          <button className="mt-8 mb-8 bg-black rounded-lg py-2 px-2 w-72 text-white hover:bg-gray-800 transition duration-500">
+          <button className="mt-8 mb-8 bg-blue-700 rounded-lg py-2 px-2 w-72 text-white hover:bg-blue-800 transition duration-500">
             Sign in
           </button>
 
           <span className="text-gray-500 text-xs">
             Not a user?{" "}
-            <Link href="/signup">
+            <Link href="/signUp">
               <span className="hover:text-gray-800 duration-300 hover:cursor-pointer underline">
                 Sign up
               </span>
