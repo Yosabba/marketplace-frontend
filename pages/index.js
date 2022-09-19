@@ -30,10 +30,11 @@ export default function Home({ data }) {
 
       <section className="flex mt-4 pb-20 flex-col items-center ">
         <div className="bg-[url('../public/house-community.jpg')] bg-cover w-full h-[65vh]">
-          <div className="bg-white h-[50vh] ml-12 rounded-lg my-8">
-            <h1 className="text-2xl font-medium mb-6 ml-2">
-              Find your next home or property
-            </h1>
+          <div className="flex flex-col items-center justify-center h-full">
+            <h1 className="text-5xl font-bold text-white">House Marketplace</h1>
+            <p className="text-2xl text-white">
+              Find your dream house in a few clicks
+            </p>
             <HomeForm />
           </div>
         </div>
