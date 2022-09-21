@@ -78,7 +78,7 @@ export default function Home() {
         <br />
         <form onSubmit={onSubmit} className="flex flex-col items-center">
           <input
-            className="rounded-lg py-2 w-72 focus:outline-gray-200 indent-8 transition duration-300 bg-[url('/namebadge.svg')] bg-no-repeat bg-left"
+            className="rounded-lg py-2 w-72 outline outline-1 outline-gray-200 focus:outline-gray-800 indent-8 transition duration-300 bg-[url('/namebadge.svg')] bg-no-repeat bg-left"
             type="text"
             placeholder="Name"
             onChange={onChange}
@@ -86,7 +86,7 @@ export default function Home() {
             id="name"
           />
           <input
-            className="rounded-lg py-2 w-72 focus:outline-gray-200 indent-8 transition duration-300 mt-4 bg-[url('/personIcon.svg')] bg-no-repeat bg-left"
+            className="rounded-lg py-2 w-72 outline outline-1 outline-gray-200 focus:outline-gray-800 indent-8 transition duration-300 mt-4 bg-[url('/personIcon.svg')] bg-no-repeat bg-left"
             type="text"
             placeholder="Username or Email"
             onChange={onChange}
@@ -95,7 +95,7 @@ export default function Home() {
           />
           <br />
           <input
-            className="rounded-lg py-2 w-72 focus:outline-gray-200 indent-8 transition duration-300 bg-[url('/lockIcon.svg')] bg-no-repeat bg-left"
+            className="rounded-lg py-2 w-72 focus:outline-gray-800 indent-8 transition duration-300 bg-[url('/lockIcon.svg')] bg-no-repeat bg-left outline outline-1 outline-gray-200 "
             type="password"
             placeholder="Password"
             onChange={onChange}
