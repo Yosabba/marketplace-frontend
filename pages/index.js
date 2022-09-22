@@ -4,22 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import HomeForm from "../components/forms/HomeForm";
-import HomeCards from "../components/HomeCards";
+import HomeCards from "../components/cards/HomeCards";
 
-export const getStaticProps = async () => {
-  const response = await axios.get("http://localhost:5000/houses");
-  const data = response.data;
-
-  return {
-    props: {
-      data,
-    },
-  };
-};
-
-export default function Home({ data }) {
-  const [houses, setHouses] = useState(data);
-
+export default function Home() {
   return (
     <main>
       <Head>
@@ -47,7 +34,7 @@ export default function Home({ data }) {
           find these anywhere else."
           btnText="Find Rentals"
           imgUrl="/house-2.jpg"
-          pathUrl="/for_rent"
+          pathUrl="/homes/for-rent"
         />
         <HomeCards
           name="Buy a house"
@@ -55,7 +42,7 @@ export default function Home({ data }) {
           own."
           btnText="Browse Houses"
           imgUrl="/house-3.jpg"
-          pathUrl="/for_sale"
+          pathUrl="/homes"
         />
         <HomeCards
           name="Sell a house"
@@ -63,7 +50,7 @@ export default function Home({ data }) {
           find these anywhere else."
           btnText="Sell a Home"
           imgUrl="/house-with-yard-sign-sale.jpg"
-          pathUrl="/for_sale"
+          pathUrl="/for-sale"
         />
       </section>
     </main>
