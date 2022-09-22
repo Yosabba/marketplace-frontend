@@ -1,17 +1,15 @@
-const HouseCard = ({house}) => {
+const HouseCard = ({ house }) => {
+  function housePriceToComma(x) {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  }
   return (
-    <section className="flex flex-col justify-center items-center border-2 border-gray-100 rounded-lg transition duration-500 ease-in-out hover:shadow-md cursor-pointer m-8">
-      <img src={house.image_url} alt="" />
-      <h1>${house.price}</h1>
-      <p>Bedrooms {house.bedroom}</p>
-      <p>Bathrooms {house.bathroom}</p>
+    <section className="flex flex-col border-2 border-gray-100 rounded-lg transition duration-500 ease-in-out hover:shadow-md cursor-pointer m-8">
+      <img src={house.image_url} alt="image of the house property" />
+      <h1 className=" font-bold text-lg text-left ">${housePriceToComma(house.price)}</h1>
 
-      <h1>{house.house_location}</h1>
-      <h1>{house._description}</h1>
-      <h1>Parking: {house.parking ? "Yes" : "No"}</h1>
-      <h1>Furnished: {house.furnished ? "Yes" : "No"}</h1>
-
-      <h1>{house._type}</h1>
+      <div className="flex flex-row">
+        <p className="text-gray-500 capitalize text-sm ">{`bd ${house.bedroom} | ba ${house.bathroom} | ${house.house_location}`}</p>
+      </div>
     </section>
   );
 };
