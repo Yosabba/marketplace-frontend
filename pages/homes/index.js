@@ -35,9 +35,20 @@ export default function Home({ data }) {
 
       <section className="grid grid-cols-auto-fit gap-7 justify-items-center mx-3">
         {houses.map((house) => {
-          return <HouseCard house={house} />;
+          return (
+            <section
+              className="flex flex-col justify-center items-center border-2 border-gray-100 rounded-lg transition duration-500 ease-in-out hover:shadow-md cursor-pointer m-8"
+              key={house.listingid}
+            >
+              {/* <Image src={house.image_url} width={300} height={400} /> */}
+
+              
+            </section>
+          );
         })}
+
       </section>
+
     </main>
   );
 }
