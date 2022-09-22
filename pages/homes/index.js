@@ -2,7 +2,9 @@ import Head from "next/head";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import HouseCard from "../../components/HouseCard";
 import React, { useState } from "react";
+
 export const getStaticProps = async () => {
   const response = await axios.get("http://localhost:5000/houses");
   const data = response.data;
@@ -37,21 +39,14 @@ export default function Home({ data }) {
               key={house.listingid}
             >
               {/* <Image src={house.image_url} width={300} height={400} /> */}
-              <img src={house.image_url} alt="" />
-              <h1>${house.price}</h1>
-              <p>Bedrooms {house.bedroom}</p>
-              <p>Bathrooms {house.bathroom}</p>
 
-              <h1>{house.house_location}</h1>
-              <h1>{house._description}</h1>
-              <h1>Parking: {house.parking ? "Yes" : "No"}</h1>
-              <h1>Furnished: {house.furnished ? "Yes" : "No"}</h1>
-
-              <h1>{house._type}</h1>
+              
             </section>
           );
         })}
+
       </section>
+
     </main>
   );
 }
