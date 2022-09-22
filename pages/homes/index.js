@@ -2,19 +2,23 @@ import Head from "next/head";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import HouseCard from "../../components/HouseCard";
+import React, { useState } from "react";
 
-// export const getStaticProps = async () => {
-//   const response = await axios.get("http://localhost:5000/houses");
-//   const data = response.data;
+export const getStaticProps = async () => {
+  const response = await axios.get("http://localhost:5000/houses");
+  const data = response.data;
 
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// };
+  return {
+    props: {
+      data,
+    },
+  };
+};
 
-export default function Home() {
+export default function Home({ data }) {
+  const [houses, setHouses] = useState(data);
+
   return (
     <main className="pt-12 h-screen">
       <Head>
@@ -26,6 +30,23 @@ export default function Home() {
       <section className="flex mt-4 mb-4 flex-col items-center">
         <h1 className=" text-6xl font-semibold mb-20">All Homes</h1>
       </section>
+
+      <section className="grid grid-cols-auto-fit gap-7 justify-items-center mx-3">
+        {houses.map((house) => {
+          return (
+            <section
+              className="flex flex-col justify-center items-center border-2 border-gray-100 rounded-lg transition duration-500 ease-in-out hover:shadow-md cursor-pointer m-8"
+              key={house.listingid}
+            >
+              {/* <Image src={house.image_url} width={300} height={400} /> */}
+
+              
+            </section>
+          );
+        })}
+
+      </section>
+
     </main>
   );
 }
