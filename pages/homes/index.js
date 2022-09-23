@@ -30,13 +30,15 @@ export default function Home({ data }) {
       </Head>
 
       <section className="flex mt-4 mb-4 flex-col items-center">
-        <h1 className=" text-6xl font-semibold mb-20">All Homes</h1>
+        <h1 className=" text-6xl font-semibold mb-20">Homes For Sale</h1>
       </section>
 
-      <section className="grid grid-cols-auto-fit gap-7 justify-items-center mx-3">
-        {houses.map((house) => {
-          return <HouseCard house={house} /> ;
-        })}
+      <section className="flex flex-row flex-wrap justify-start ml-4 gap-8">
+        {houses
+          .filter((house) => house._type === "own")
+          .map((house) => (
+            <HouseCard key={house.id} house={house} />
+          ))}
       </section>
     </main>
   );
