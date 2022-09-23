@@ -21,16 +21,16 @@ const Header = () => {
       </div>
 
       <div>
-        <Link href="/homes">
+        <Link href="/houses">
           <a className={linkStyle}>Buy</a>
         </Link>
-        <Link href="/homes/for-rent">
+        <Link href="/houses/for-rent">
           <a className={linkStyle}>Rent</a>
         </Link>
         <Link href="/for-sale">
           <a className={linkStyle}>Sell</a>
         </Link>
-        <Link href="/signIn">
+        <Link href="/login">
           <button className={btnStyle}>Sign In</button>
         </Link>
       </div>
