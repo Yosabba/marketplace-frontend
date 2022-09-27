@@ -18,7 +18,7 @@ export const getStaticProps = async () => {
   };
 };
 
-export default function Home({ data }) {
+export default function Home({ data = null }) {
   const [houses, setHouses] = useState(data);
 
   return (
@@ -35,7 +35,7 @@ export default function Home({ data }) {
 
       <section className="flex flex-row flex-wrap justify-start ml-4 gap-8">
         {houses
-          .filter((house) => house._type === "own")
+          .filter((house) => house.type === "own")
           .map((house) => (
             <HouseCard key={house.id} house={house} />
           ))}
