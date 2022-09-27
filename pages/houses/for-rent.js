@@ -6,7 +6,9 @@ import React, { useState } from 'react';
 import HouseCard from "../../components/cards/HouseCard";
 
 export const getStaticProps = async () => {
-  const response = await axios.get("http://localhost:5000/houses");
+  const response = await axios.get(
+    "https://marketplace-backend-production-b296.up.railway.app/houses/"
+  );
   const data = response.data;
 
   return {
@@ -16,7 +18,7 @@ export const getStaticProps = async () => {
   };
 };
 
-export default function ForRent({data}) {
+export default function ForRent({data = null}) {
   const [houses, setHouses] = useState(data);
   return (
     <main className="pt-12 h-screen">
@@ -32,7 +34,7 @@ export default function ForRent({data}) {
 
       <section className="flex flex-row flex-wrap justify-start ml-4 gap-8">
         {houses
-          .filter((house) => house._type === "Rent")
+          .filter((house) => house.type === "Rent")
           .map((house) => (
             <HouseCard key={house.id} house={house} />
           ))}
