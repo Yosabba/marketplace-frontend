@@ -7,58 +7,63 @@ import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Zoom } from "react-toastify";
-import Forms from "../components/forms/CreateHouseForm";
 
 export default function SignIn() {
   const [data, setData] = useState([]);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [isFormEmpty, setIsFormEmpty] = useState(true);
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
   const router = useRouter();
   const homeContainer = "flex flex-row items-center justify-center";
 
-  useEffect(() => {
-    if (isUserLoggedIn) {
-      router.push("/explore");
-    }
+  // useEffect(() => {
+  //   if (isUserLoggedIn) {
+  //     router.push("/explore");
+  //   }
 
-    getData();
-  }, [router, isUserLoggedIn]);
+  //   getData();
+  // }, [router, isUserLoggedIn]);
 
-  const getData = async () => {
-    const response = await axios.get("http://localhost:5000/cars");
-    setData(response.data);
-    console.log(response.data);
-  };
+  // const getData = async () => {
+  //   const response = await axios.get("http://localhost:5000/cars");
+  //   setData(response.data);
+  //   console.log(response.data);
+  // };
 
   const onChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      const response = await axios.post(
+        "https://marketplace-backend-production-b296.up.railway.app/login/",
+        formData,
+        { withCredentials: true, credentials: "include" }
+      );
       toast.success("Signed in", {
         position: toast.POSITION.TOP_RIGHT,
       });
 
+      const { data } = response;
+
+      console.log(data);
+
       setIsUserLoggedIn(true);
 
       setFormData({
-        email: "",
+        username: "",
         password: "",
       });
     } catch ({ message }) {
-      console.log(`${message}`);
+      console.log(message);
 
-      toast.error("Incorrect email or password", {
+      toast.error(`Invalid email or password`, {
         position: toast.POSITION.TOP_RIGHT,
       });
     }
@@ -76,6 +81,7 @@ export default function SignIn() {
         pauseOnHover={false}
         transition={Zoom}
         hideProgressBar={true}
+        autoClose={2000}
       />
 
       <section className="flex mt-4 mb-4 flex-col items-center">
@@ -87,8 +93,9 @@ export default function SignIn() {
             type="text"
             placeholder="Username or Email"
             onChange={onChange}
-            value={formData.email}
-            id="email"
+            value={formData.username}
+            id="username"
+            name="username"
           />
           <br />
           <input
@@ -98,6 +105,7 @@ export default function SignIn() {
             onChange={onChange}
             value={formData.password}
             id="password"
+            name="password"
           />
           <Link href={"/forgotPass"}>
             <span className="ml-40 text-sm pt-2 hover:cursor-pointer text-gray-400 hover:text-gray-800 transition duration-300">
