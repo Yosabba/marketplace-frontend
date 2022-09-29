@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const HomeCards = ({ btnText, name, desc, imgUrl, pathUrl }) => {
   return (
-    <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
+    <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
       <Link href={pathUrl}>
         <a>
           <Image
@@ -15,7 +15,7 @@ const HomeCards = ({ btnText, name, desc, imgUrl, pathUrl }) => {
           />
         </a>
       </Link>
-      <div class="p-5">
+      <div className="p-5">
         <Link href="/explore">
           <a>
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
