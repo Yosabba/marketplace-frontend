@@ -10,16 +10,16 @@ const HomeForm = () => {
 
     if (cityState === "") {
       router.push("/houses");
-    }
-
-    try {
-      const response = await axios(
-        `http://localhost:5000/houses?cityState=${cityState}`
-      );
-      const data = response.data;
-      console.log(data);
-    } catch ({ message }) {
-      console.log(message);
+    } else {
+      try {
+        const response = await axios(
+          `http://localhost:5000/houses?cityState=${cityState}`
+        );
+        const data = response.data;
+        console.log(data);
+      } catch ({ message }) {
+        console.log(message);
+      }
     }
   };
 
