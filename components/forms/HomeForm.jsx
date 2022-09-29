@@ -1,4 +1,32 @@
+import React, { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
 const HomeForm = () => {
+  const [cityState, setCityState] = useState("");
+  const router = useRouter();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (cityState === "") {
+      router.push("/houses");
+    }
+
+    try {
+      const response = await axios(
+        `http://localhost:5000/houses?cityState=${cityState}`
+      );
+      const data = response.data;
+      console.log(data);
+    } catch ({ message }) {
+      console.log(message);
+    }
+  };
+
+  const handleChange = (e) => {
+    setCityState(e.target.value);
+  };
+
   return (
     <>
       <form>
@@ -29,13 +57,16 @@ const HomeForm = () => {
           <input
             type="search"
             id="default-search"
-            className="block p-4 pl-10 w-96 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-gray-300 focus:outline-gray-200" 
+            className="block p-4 pl-10 w-96 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-gray-300 focus:outline-gray-200"
             placeholder="City, State"
-            required=""
+            onChange={handleChange}
+            value={cityState}
+            name="cityState"
           />
           <button
             type="submit"
             className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            onClick={handleSubmit}
           >
             Search
           </button>
