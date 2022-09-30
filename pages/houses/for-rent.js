@@ -34,7 +34,7 @@ export default function ForRent({data = null}) {
 
       <section className="flex flex-row flex-wrap justify-start ml-4 gap-8">
         {houses
-          .filter((house) => house.type === "Rent")
+          .filter((house) => house.type === "rent")
           .map((house) => (
             <HouseCard key={house.id} house={house} />
           ))}
