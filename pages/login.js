@@ -44,7 +44,7 @@ export default function SignIn() {
       const response = await axios.post(
         "https://marketplace-backend-production-b296.up.railway.app/login/",
         formData,
-        { withCredentials: true, credentials: "include" }
+        { withCredentials: true }
       );
       toast.success("Signed in", {
         position: toast.POSITION.TOP_RIGHT,
