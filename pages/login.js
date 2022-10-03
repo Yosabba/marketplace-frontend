@@ -19,19 +19,16 @@ export default function SignIn() {
   const router = useRouter();
   const homeContainer = "flex flex-row items-center justify-center";
 
-  // useEffect(() => {
-  //   if (isUserLoggedIn) {
-  //     router.push("/explore");
-  //   }
+  useEffect(() => {
+    setTimeout(() => {
+      if (isUserLoggedIn) {
+      router.push("/for-sale");
+    }
+    }, "1000");
+    
 
-  //   getData();
-  // }, [router, isUserLoggedIn]);
 
-  // const getData = async () => {
-  //   const response = await axios.get("http://localhost:5000/cars");
-  //   setData(response.data);
-  //   console.log(response.data);
-  // };
+  }, [router, isUserLoggedIn]);
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -42,7 +39,7 @@ export default function SignIn() {
 
     try {
       const response = await axios.post(
-        "https://marketplace-backend-production-b296.up.railway.app/login/",
+        "http://localhost:5000/login",
         formData,
         { withCredentials: true }
       );
@@ -52,9 +49,12 @@ export default function SignIn() {
 
       const { data } = response;
 
-      console.log(data);
+
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", data.user);
 
       setIsUserLoggedIn(true);
+
 
       setFormData({
         username: "",
