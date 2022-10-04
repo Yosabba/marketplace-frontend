@@ -9,14 +9,15 @@ const HomeForm = () => {
     e.preventDefault();
 
     if (cityState === "") {
-      router.push("/houses");
+      console.log("Please enter a city and state");
+      return;
     } else {
       const res = await axios.get(
         `http://localhost:5000/houses?cityState=${cityState}`
       );
       router.push({
         pathname: "/houses",
-        query: { data: res.data },
+        query: { houseData: res.data },
       });
     }
   };
