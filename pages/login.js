@@ -10,6 +10,7 @@ import { Zoom } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { logUserIn, changeMessage, signUserIn } from "../slices/userSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
+import SyncLoader from "react-spinners/SyncLoader";
 
 export default function SignIn() {
   const [isFormEmpty, setIsFormEmpty] = useState(true);
@@ -19,7 +20,9 @@ export default function SignIn() {
   });
   const router = useRouter();
   const dispatch = useDispatch();
-  const { username, isLoggedIn } = useSelector((state) => state.user);
+  const { username, isLoggedIn, isLoading } = useSelector(
+    (state) => state.user
+  );
   const homeContainer = "flex flex-row items-center justify-center";
 
   useEffect(() => {
@@ -72,6 +75,12 @@ export default function SignIn() {
         hideProgressBar={true}
         autoClose={2000}
       />
+
+      {isLoading && (
+        <div className=" flex flex-col justify-center items-center h-full w-full fixed top-0 left-0 bg-white opacity-80">
+          <SyncLoader color={"#00308F"} loading={true} size={20} />
+        </div>
+      )}
 
       <section className="flex mt-4 mb-4 flex-col items-center">
         <h1 className=" text-6xl font-semibold mb-20">Welcome Back!</h1>
