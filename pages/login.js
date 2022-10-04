@@ -7,10 +7,17 @@ import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Zoom } from "react-toastify";
+import { useSelector, useDispatch } from "react-redux";
+import { logUserIn, changeMessage, signUserIn } from "../slices/userSlice";
 
 export default function SignIn() {
   const [data, setData] = useState([]);
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  //grab value
+  const { user, isLoggedIn } = useSelector((state) => state.userLoggedIn);
+
+  //disptach actions from userslice
+  const dispatch = useDispatch();
+
   const [isFormEmpty, setIsFormEmpty] = useState(true);
   const [formData, setFormData] = useState({
     username: "",
@@ -21,14 +28,11 @@ export default function SignIn() {
 
   useEffect(() => {
     setTimeout(() => {
-      if (isUserLoggedIn) {
-      router.push("/for-sale");
-    }
+      if (isLoggedIn) {
+        router.push("/for-sale");
+      }
     }, "1000");
-    
-
-
-  }, [router, isUserLoggedIn]);
+  }, [router, isLoggedIn]);
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -38,23 +42,11 @@ export default function SignIn() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/login",
-        formData,
-        { withCredentials: true }
-      );
+      dispatch(signUserIn(formData));
+
       toast.success("Signed in", {
         position: toast.POSITION.TOP_RIGHT,
       });
-
-      const { data } = response;
-
-
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", data.user);
-
-      setIsUserLoggedIn(true);
-
 
       setFormData({
         username: "",
