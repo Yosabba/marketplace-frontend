@@ -37,9 +37,9 @@ export default function Home({ data = null }) {
         {houses
           .filter((house) => house.type === "own")
           .map((house) => (
-            <Link href={`/houses/${house.id}`}>
+            <Link key={house.id} href={`/houses/${house.id}`}>
               <a>
-                <HouseCard key={house.id} house={house} />
+                <HouseCard house={house} />
               </a>
             </Link>
           ))}
