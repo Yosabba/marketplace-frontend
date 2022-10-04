@@ -1,20 +1,15 @@
-import { createSlice, createAsyncThunk, isRejected } from "@reduxjs/toolkit";
-import userService from "./userService";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  user: "",
+  username: "",
   isLoggedIn: false,
+  error: "",
 };
 
 export const signUserIn = createAsyncThunk(
   "user/login",
-  async (user, thunkApi) => {
-    // try {
-    //   return await userService.signUserIn(user);
-    // } catch ({ message }) {
-    //   return thunkApi.rejectWithValue(message);
-    // }
+  async (user, { rejectWithValue, fulfillWithValue }) => {
     try {
       const { data } = await axios.post("http://localhost:5000/login", user, {
         withCredentials: true,
@@ -24,10 +19,9 @@ export const signUserIn = createAsyncThunk(
         localStorage.setItem("token", JSON.stringify(data.token));
         localStorage.setItem("user", JSON.stringify(data.user));
       }
-      console.log("etbbte");
-      return data;
-    } catch ({ message }) {
-      return message;
+      return fulfillWithValue(data);
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -37,7 +31,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     logUserOut: (state) => {
-      state.user = false;
+      state.isLoggedIn = false;
     },
     logUserIn: (state) => {
       state.isLoggedIn = true;
@@ -45,19 +39,21 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(signUserIn.rejected, (state) => {
+      .addCase(signUserIn.pending, (state) => {
         state.isLoggedIn = false;
       })
       .addCase(signUserIn.fulfilled, (state, action) => {
         state.isLoggedIn = true;
         state.user = action.payload;
+        state.error = "";
       })
-      .addCase(signUserIn.pending, (state) => {
+      .addCase(signUserIn.rejected, (state, action) => {
         state.isLoggedIn = false;
+        state.error = action.error.message;
       });
   },
 });
 
-export const { logUserOut, logUserIn, changeMessage } = userSlice.actions;
+export const { logUserOut, logUserIn } = userSlice.actions;
 
 export default userSlice.reducer;

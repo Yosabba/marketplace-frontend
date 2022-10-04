@@ -9,21 +9,17 @@ import "react-toastify/dist/ReactToastify.css";
 import { Zoom } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { logUserIn, changeMessage, signUserIn } from "../slices/userSlice";
+import { unwrapResult } from "@reduxjs/toolkit";
 
 export default function SignIn() {
-  const [data, setData] = useState([]);
-  //grab value
-  const { user, isLoggedIn } = useSelector((state) => state.userLoggedIn);
-
-  //disptach actions from userslice
-  const dispatch = useDispatch();
-
   const [isFormEmpty, setIsFormEmpty] = useState(true);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
   const router = useRouter();
+  const dispatch = useDispatch();
+  const { username, isLoggedIn } = useSelector((state) => state.user);
   const homeContainer = "flex flex-row items-center justify-center";
 
   useEffect(() => {
@@ -42,7 +38,8 @@ export default function SignIn() {
     e.preventDefault();
 
     try {
-      dispatch(signUserIn(formData));
+      const response = await dispatch(signUserIn(formData));
+      unwrapResult(response);
 
       toast.success("Signed in", {
         position: toast.POSITION.TOP_RIGHT,
@@ -52,8 +49,8 @@ export default function SignIn() {
         username: "",
         password: "",
       });
-    } catch ({ message }) {
-      console.log(message);
+    } catch (error) {
+      console.log(error);
 
       toast.error(`Invalid email or password`, {
         position: toast.POSITION.TOP_RIGHT,
