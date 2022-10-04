@@ -4,6 +4,7 @@ import axios from "axios";
 const initialState = {
   username: "",
   isLoggedIn: false,
+  isLoading: false,
   error: "",
 };
 
@@ -41,14 +42,17 @@ export const userSlice = createSlice({
     builder
       .addCase(signUserIn.pending, (state) => {
         state.isLoggedIn = false;
+        state.isLoading = true;
       })
       .addCase(signUserIn.fulfilled, (state, action) => {
         state.isLoggedIn = true;
         state.user = action.payload;
+        state.isLoading = false;
         state.error = "";
       })
       .addCase(signUserIn.rejected, (state, action) => {
         state.isLoggedIn = false;
+        state.isLoading = false;
         state.error = action.error.message;
       });
   },
