@@ -2,7 +2,7 @@ import Head from "next/head";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import HouseCard from "../../components/cards/HouseCard";
 
 export const getStaticProps = async () => {
@@ -18,7 +18,7 @@ export const getStaticProps = async () => {
   };
 };
 
-export default function ForRent({data = null}) {
+export default function ForRent({ data = null }) {
   const [houses, setHouses] = useState(data);
   return (
     <main className="pt-12 h-screen">
