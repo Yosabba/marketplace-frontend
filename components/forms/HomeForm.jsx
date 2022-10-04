@@ -13,7 +13,7 @@ const HomeForm = () => {
       return;
     } else {
       const res = await axios.get(
-        `http://localhost:5000/houses?cityState=${cityState}`
+        `https://marketplace-backend-production-b296.up.railway.app/houses?cityState=${cityState}`
       );
       router.push({
         pathname: "/houses",

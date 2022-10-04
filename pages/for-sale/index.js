@@ -8,7 +8,9 @@ import { useSelector, useDispatch } from "react-redux";
 
 
 export const getStaticProps = async () => {
-  const response = await axios.get("http://localhost:5000/houses");
+  const response = await axios.get(
+    "https://marketplace-backend-production-b296.up.railway.app/houses"
+  );
   const data = response.data;
 
   return {
