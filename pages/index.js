@@ -34,7 +34,7 @@ export default function Home() {
           find these anywhere else."
           btnText="Find Rentals"
           imgUrl="/house-2.jpg"
-          pathUrl="/homes/for-rent"
+          pathUrl="/houses/for-rent"
         />
         <HomeCards
           name="Buy a house"
@@ -42,7 +42,7 @@ export default function Home() {
           own."
           btnText="Browse Houses"
           imgUrl="/house-3.jpg"
-          pathUrl="/homes"
+          pathUrl="/houses"
         />
         <HomeCards
           name="Sell a house"
