@@ -9,7 +9,7 @@ export default function Home() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    name: "",
+    username: "",
   });
 
   const onChange = (e) => {
@@ -23,12 +23,7 @@ export default function Home() {
     e.preventDefault();
 
     try {
-      const auth = getAuth();
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        formData.email,
-        formData.password
-      );
+      
 
       toast.success("Signed up", {
         position: toast.POSITION.BOTTOM_CENTER,
@@ -36,15 +31,10 @@ export default function Home() {
 
       const user = userCredential.user;
 
-      updateProfile(user, {
-        displayName: formData.name,
-      });
+      
 
-      const formDataCopy = { ...formData };
-      delete formDataCopy.password;
-      formDataCopy.timestamp = serverTimestamp();
+  
 
-      await setDoc(doc(db, "users", user.uid), formDataCopy);
 
       setFormData({
         email: "",
