@@ -30,7 +30,7 @@ export const getStaticProps = async (context) => {
   };
 };
 
-const HouseDetails = ({ house }) => {
+const HouseDetails = ({ house = null }) => {
   return (
     <div className="">
       <img src={house.image_url} alt="" />
