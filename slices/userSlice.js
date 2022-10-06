@@ -14,10 +14,7 @@ export const signUserIn = createAsyncThunk(
     try {
       const { data } = await axios.post(
         "https://marketplace-backend-production-b296.up.railway.app/houses",
-        user,
-        {
-          withCredentials: true,
-        }
+        user
       );
 
       if (data) {
