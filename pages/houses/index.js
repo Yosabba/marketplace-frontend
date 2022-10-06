@@ -18,7 +18,7 @@ export const getStaticProps = async () => {
   };
 };
 
-export default function Home({ data = null }) {
+export default function Home({ data }) {
   const [houses, setHouses] = useState(data);
 
   return (
