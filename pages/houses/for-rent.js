@@ -1,7 +1,5 @@
 import Head from "next/head";
 import axios from "axios";
-import Image from "next/image";
-import Link from "next/link";
 import React, { useState } from "react";
 import HouseCard from "../../components/cards/HouseCard";
 
