@@ -14,7 +14,7 @@ const HouseCard = ({ house }) => {
         className="rounded-xl hover:scale-105 py-2 transition duration-500 ease-in-out w-full "
       />
       <h1 className=" font-bold text-lg text-left ">
-        ${housePriceToComma(house.price)}
+        ${house.price}
       </h1>
       {/* zoom on image when hovered */}
 
