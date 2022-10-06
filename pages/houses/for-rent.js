@@ -16,7 +16,7 @@ export const getStaticProps = async () => {
   };
 };
 
-export default function ForRent({ data = null }) {
+export default function ForRent({ data }) {
   const [houses, setHouses] = useState(data);
   return (
     <main className="pt-12 h-screen">
