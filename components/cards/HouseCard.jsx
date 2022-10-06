@@ -1,9 +1,9 @@
 import Image from "next/image";
 
 const HouseCard = ({ house }) => {
-  // function housePriceToComma(x) {
-  //   return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-  // }
+  function housePriceToComma(x) {
+    return x.toLocaleString("en-US");
+  }
 
   return (
     <section className="flex flex-col border-2 border-gray-100 rounded-lg transition duration-500 ease-in-out hover:shadow-md cursor-pointer w-96 min-h-[30vh] p-6">
@@ -14,7 +14,7 @@ const HouseCard = ({ house }) => {
         className="rounded-xl hover:scale-105 py-2 transition duration-500 ease-in-out w-full "
       />
       <h1 className=" font-bold text-lg text-left ">
-        ${house.price}
+        ${housePriceToComma(house.price)}
       </h1>
       {/* zoom on image when hovered */}
 
