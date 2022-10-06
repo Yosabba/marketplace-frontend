@@ -35,13 +35,13 @@ const HouseDetails = ({ house = null }) => {
     <div className="">
       <img src={house.image_url} alt="" />
       <h1>{house.price}</h1>
-      <p>{house.furnished}</p>
+      <p>{house.furnished && 'fully furn'}</p>
       <p>{house.bedroom}</p>
       <p>{house.bathroom}</p>
       <p>{house.type}</p>
       <p>{house.description}</p>
-      <p>{house.parking}</p>
-      <p>{house.offer}</p>
+      <p>{house.parking && 'has parking'}</p>
+      <p>{house.offer && 'has offer waiting'}</p>
     </div>
   );
 };
