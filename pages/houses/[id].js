@@ -7,7 +7,7 @@ export const getStaticPaths = async () => {
 
   const paths = data.map((house) => {
     return {
-      params: { id: house.id.toString() },
+      params: { id: `${house.id}` },
     };
   });
 
@@ -35,13 +35,13 @@ const HouseDetails = ({ house = null }) => {
     <div className="">
       <img src={house.image_url} alt="" />
       <h1>{house.price}</h1>
-      <p>{house.furnished && 'fully furn'}</p>
+      <p>{house.furnished && "fully furn"}</p>
       <p>{house.bedroom}</p>
       <p>{house.bathroom}</p>
       <p>{house.type}</p>
       <p>{house.description}</p>
-      <p>{house.parking && 'has parking'}</p>
-      <p>{house.offer && 'has offer waiting'}</p>
+      <p>{house.parking && "has parking"}</p>
+      <p>{house.offer && "has offer waiting"}</p>
     </div>
   );
 };

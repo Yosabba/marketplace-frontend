@@ -9,7 +9,7 @@ export const getStaticProps = async () => {
   const response = await axios.get(
     "https://marketplace-backend-production-b296.up.railway.app/houses/"
   );
-  const data = response.data;
+  const data = response?.data;
 
   return {
     props: {
