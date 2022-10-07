@@ -1,6 +1,6 @@
 import Image from "next/image";
 import LocationSvg from "../../assets/LocationSvg";
-import BathroomSvg from "../../assets/bathroomSvg";
+import BathroomSvg from "../../assets/BathroomSvg";
 import BedSvg from "../../assets/BedSvg";
 
 const HouseCard = ({ house }) => {
