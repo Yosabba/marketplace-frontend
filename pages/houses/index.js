@@ -3,6 +3,7 @@ import axios from "axios";
 import Link from "next/link";
 import HouseCard from "../../components/cards/HouseCard";
 import React, { useState } from "react";
+import SyncLoader from "react-spinners/SyncLoader";
 
 export const getStaticProps = async () => {
   const response = await axios.get(
@@ -19,6 +20,11 @@ export const getStaticProps = async () => {
 
 export default function Home({ data }) {
   const [houses, setHouses] = useState(data);
+  const [cardIsClicked, setCardIsClicked] = useState(false);
+
+  const handleClick = (e) => {
+    setCardIsClicked(true);
+  };
 
   return (
     <main className="pt-12 mb-20">
@@ -37,11 +43,16 @@ export default function Home({ data }) {
           .filter((house) => house.type === "own")
           .map((house) => (
             <Link key={house.id} href={`/houses/${house.id}`}>
-              <a>
+              <a onClick={handleClick}>
                 <HouseCard house={house} />
               </a>
             </Link>
           ))}
+        {cardIsClicked && (
+          <div className=" flex flex-col justify-center items-center h-full w-full fixed top-0 left-0 bg-white opacity-80">
+            <SyncLoader color={"#00308F"} loading={true} size={20} />
+          </div>
+        )}
       </section>
     </main>
   );
