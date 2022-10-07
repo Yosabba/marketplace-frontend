@@ -99,7 +99,7 @@ export default function ForgotPassword() {
                   d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
                 />
               </svg>
-              <Link href="/signIn">
+              <Link href="/login">
                 <a className="text-gray-400 ml-2 hover:text-black transition duration-300 ease-in-out">
                   Back to Login
                 </a>
