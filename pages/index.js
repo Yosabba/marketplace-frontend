@@ -1,8 +1,23 @@
 import Head from "next/head";
 import HomeForm from "../components/forms/HomeForm";
 import HomeCards from "../components/cards/HomeCards";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addHouse } from "../slices/userSlice";
+import axios from "axios";
 
 export default function Home() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const getData = async () => {
+      const { data } = await axios.get("http://localhost:5000/houses");
+      dispatch(addHouse(data));
+
+      console.log(data);
+    };
+    getData();
+  }, []);
+
   return (
     <main className="pb-12">
       <Head>
