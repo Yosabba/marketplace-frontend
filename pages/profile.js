@@ -26,9 +26,14 @@ export default function Profile() {
           <div className="bg-gray-300">
             <p>name</p>
             <p>email</p>
-
-            
           </div>
+
+        </div>
+
+        <div>
+          <p>house icon</p>
+          <p>sell or rent your home</p>
+          <p>arrow icon</p>
         </div>
 
         
