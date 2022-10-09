@@ -6,6 +6,7 @@ const initialState = {
   isLoggedIn: false,
   isLoading: false,
   error: "",
+  allHouses: [],
 };
 
 export const signUserIn = createAsyncThunk(
@@ -58,6 +59,9 @@ export const userSlice = createSlice({
     logUserIn: (state) => {
       state.isLoggedIn = true;
     },
+    addHouse: (state, action) => {
+      state.allHouses = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -94,6 +98,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { logUserOut, logUserIn } = userSlice.actions;
+export const { logUserOut, logUserIn, addHouse } = userSlice.actions;
 
 export default userSlice.reducer;
