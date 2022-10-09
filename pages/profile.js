@@ -1,7 +1,8 @@
 import Head from "next/head";
 
-
 export default function Profile() {
+
+  const personalDetailClass = "flex flex-row justify-between items-center";
   return (
     <main className="pb-12">
       <Head>
@@ -10,12 +11,28 @@ export default function Profile() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className="flex mt-4 pb-20 flex-col items-center ">
-        PRofile Page
+      <section className=" m-8 ">
+        <div className="flex flex-row justify-between gap-3 flex-wrap mb-5">
+          <h1 className=" text-3xl ">My Profile</h1>
+          <button className="bg-blue-700 rounded-full text-white px-2 transition duration-300 ease-in-out capitalize hover:bg-blue-800">logout</button>
+        </div>
+
+        <div className=" w-1/2 ">
+          <div className={personalDetailClass}>
+            <p>personal details</p>
+            <p>change</p>
+          </div>
+
+          <div className="bg-gray-300">
+            <p>name</p>
+            <p>email</p>
+
+            
+          </div>
+        </div>
+
         
       </section>
-
-     
     </main>
   );
 }
