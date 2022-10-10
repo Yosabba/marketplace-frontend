@@ -63,6 +63,7 @@ export default function Profile() {
               />
             </svg>
           </div>
+          <span>new merge</span>
         </div>
       </section>
 
