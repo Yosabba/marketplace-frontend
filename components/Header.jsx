@@ -33,9 +33,6 @@ const Header = () => {
         <Link href="/login">
           <button className={btnStyle}>Sign In</button>
         </Link>
-        <Link href="/profile">
-          <button className={btnStyle}>profile</button>
-        </Link>
       </div>
     </header>
   );
