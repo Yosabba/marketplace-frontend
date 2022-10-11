@@ -50,7 +50,7 @@ export const signUserUp = createAsyncThunk(
 );
 
 export const userSlice = createSlice({
-  name: "userLoggedIn",
+  name: "user",
   initialState,
   reducers: {
     logUserOut: (state) => {
