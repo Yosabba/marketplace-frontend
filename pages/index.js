@@ -15,7 +15,6 @@ export default function Home() {
       );
       dispatch(addHouse(data));
 
-      console.log(data);
     };
     getData();
   }, []);
