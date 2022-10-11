@@ -12,7 +12,6 @@ import { logUserIn, changeMessage, signUserIn } from "../slices/userSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import SyncLoader from "react-spinners/SyncLoader";
 
-
 export default function SignIn() {
   const [isFormEmpty, setIsFormEmpty] = useState(true);
   const [formData, setFormData] = useState({
@@ -27,9 +26,13 @@ export default function SignIn() {
   const homeContainer = "flex flex-row items-center justify-center";
 
   useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      router.push("/profile");
+    }
     setTimeout(() => {
       if (isLoggedIn) {
-        router.push("/for-sale");
+        router.push("/profile");
       }
     }, "1000");
   }, [router, isLoggedIn]);
@@ -106,7 +109,7 @@ export default function SignIn() {
             id="password"
             name="password"
           />
-          <Link href={"/forgotPass"}>
+          <Link href="/forgotPass">
             <span className="ml-40 text-sm pt-2 hover:cursor-pointer text-gray-400 hover:text-gray-800 transition duration-300">
               Forgot Password?
             </span>
@@ -118,7 +121,7 @@ export default function SignIn() {
 
           <span className="text-gray-500 text-xs">
             Not a user?{" "}
-            <Link href="/signUp">
+            <Link href="/signup">
               <span className="hover:text-gray-800 duration-300 hover:cursor-pointer underline">
                 Sign up
               </span>
