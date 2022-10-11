@@ -10,7 +10,9 @@ export default function Home() {
   const dispatch = useDispatch();
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios.get("http://localhost:5000/houses");
+      const { data } = await axios.get(
+        "https://marketplace-backend-production-b296.up.railway.app/houses"
+      );
       dispatch(addHouse(data));
 
       console.log(data);
