@@ -2,6 +2,8 @@ import Head from "next/head";
 import houseCard from "../components/cards/HouseCard";
 import { useSelector } from "react-redux";
 import HouseCard from "../components/cards/HouseCard";
+import { useEffect, useState } from "react";
+
 
 export default function Profile() {
   const { allHouses } = useSelector((state) => state.user);
@@ -31,6 +33,7 @@ export default function Profile() {
             <p>email</p>
           </div>
         </div>
+
 
         <div className="bg-gray-100 rounded-xl p-3 mb-48 flex flex-row w-1/2 justify-between hover:cursor-pointer">
           <svg
