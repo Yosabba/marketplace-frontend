@@ -9,7 +9,7 @@ const HouseCard = ({ house }) => {
   }
 
   return (
-    <section className="flex flex-col rounded-lg transition duration-500 ease-in-out cursor-pointer w-96 min-h-[30vh] p-6">
+    <section className="flex flex-col rounded-lg transition duration-500 ease-in-out cursor-pointer w-80 min-h-[30vh] p-6">
       <Image
         src={house.image_url}
         alt="image of the house property"

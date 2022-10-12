@@ -7,15 +7,11 @@ import { useRouter } from "next/router";
 
 const Header = () => {
   const { isLoggedIn } = useSelector((state) => state.user);
-
   const dispatch = useDispatch();
   const router = useRouter();
-
   const headerWrapper = "flex justify-between items-center py-4 px-6 bg-white";
-
   const linkStyle =
     "mx-2 capitalize transition duration-300 ease-in-out hover:text-gray-600 text-lg";
-
   const btnStyle =
     "bg-blue-700 p-2 rounded-lg text-slate-200 ml-4 transition duration-500 ease-in-out hover:bg-blue-800 ";
 
