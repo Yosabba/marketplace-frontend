@@ -9,7 +9,7 @@ export default function Home() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    username: "",
+    name: "",
   });
 
   const onChange = (e) => {
@@ -78,7 +78,7 @@ export default function Home() {
           <input
             className="rounded-lg py-2 w-72 outline outline-1 outline-gray-200 focus:outline-gray-800 indent-8 transition duration-300 mt-4 bg-[url('/personIcon.svg')] bg-no-repeat bg-left"
             type="text"
-            placeholder="Username or Email"
+            placeholder="Email"
             onChange={onChange}
             value={formData.email}
             id="email"
@@ -93,7 +93,7 @@ export default function Home() {
             id="password"
           />
           <br />
-          <Link href="/signIn">
+          <Link href="/login">
             <span className="ml-60 pt-2 hover:cursor-pointer text-gray-400 hover:text-black transition duration-300">
               Sign in Instead
             </span>
