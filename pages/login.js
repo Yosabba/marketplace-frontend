@@ -13,16 +13,13 @@ import { unwrapResult } from "@reduxjs/toolkit";
 import SyncLoader from "react-spinners/SyncLoader";
 
 export default function SignIn() {
-  const [isFormEmpty, setIsFormEmpty] = useState(true);
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
   const router = useRouter();
   const dispatch = useDispatch();
-  const { username, isLoggedIn, isLoading } = useSelector(
-    (state) => state.user
-  );
+  const { isLoggedIn, isLoading } = useSelector((state) => state.user);
   const homeContainer = "flex flex-row items-center justify-center";
 
   useEffect(() => {
@@ -53,7 +50,7 @@ export default function SignIn() {
       });
 
       setFormData({
-        username: "",
+        email: "",
         password: "",
       });
     } catch (error) {
@@ -93,11 +90,11 @@ export default function SignIn() {
           <input
             className="rounded-lg outline outline-1 outline-gray-200 py-2 w-72 focus:outline-gray-800 indent-8 transition duration-300 mt-4 bg-[url('/personIcon.svg')] bg-no-repeat bg-left"
             type="text"
-            placeholder="Username or Email"
+            placeholder="Email"
             onChange={onChange}
-            value={formData.username}
-            id="username"
-            name="username"
+            value={formData.email}
+            id="email"
+            name="email"
           />
           <br />
           <input
