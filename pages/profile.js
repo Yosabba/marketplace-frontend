@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import HouseCard from "../components/cards/HouseCard";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Profile() {
   const { allHouses, username, isLoggedIn } = useSelector(
@@ -47,7 +48,7 @@ export default function Profile() {
           </div>
         </div>
 
-        <div className="bg-gray-100 rounded-xl p-3 mb-20 flex flex-row w-1/2 justify-between hover:cursor-pointer">
+        <div className="bg-gray-100 rounded-xl p-3 mb-20 flex flex-row w-1/2 justify-between hover:cursor-pointer hover:bg-gray-200 transition duration-500 ease-in-out">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -57,8 +58,9 @@ export default function Profile() {
             <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
             <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
           </svg>
-
-          <p>sell or rent your home</p>
+          <Link href="for-sale">
+            <p className=" capitalize font-semibold ">sell or rent your home</p>
+          </Link>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -79,8 +81,11 @@ export default function Profile() {
       <section className=" flex flex-col">
         {allHouses.map((house) => {
           return (
-            <div className=" inline-flex justify-between items-center mx-8 ">
-              <HouseCard key={house.id} house={house} />
+            <div
+              key={house.id}
+              className=" inline-flex justify-between items-center mx-8 "
+            >
+              <HouseCard house={house} />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
