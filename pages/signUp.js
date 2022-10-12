@@ -23,18 +23,11 @@ export default function Home() {
     e.preventDefault();
 
     try {
-      
-
       toast.success("Signed up", {
         position: toast.POSITION.BOTTOM_CENTER,
       });
 
       const user = userCredential.user;
-
-      
-
-  
-
 
       setFormData({
         email: "",
