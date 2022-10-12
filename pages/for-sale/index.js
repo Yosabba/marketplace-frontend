@@ -6,27 +6,41 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-
-export const getStaticProps = async () => {
-  const response = await axios.get(
-    "https://marketplace-backend-production-b296.up.railway.app/houses"
-  );
-  const data = response.data;
-
-  return {
-    props: {
-      data,
-    },
-  };
-};
-
-export default function ForSale({ data = null }) {
+export default function ForSale() {
   const router = useRouter();
   const { isLoggedIn } = useSelector((state) => state.user);
+  const [formData, setFormData] = useState({
+    type: "rent",
+    description: "",
+    price: 1,
+    offer: false,
+    parking: false,
+    bedrooms: 1,
+    bathrooms: 1,
+    location: "",
+    image: "",
+  });
+  const activeButton = "bg-blue-600 rounded-xl p-3 w-32 mx-2 text-white";
+  const inactiveButton = "bg-gray-200 rounded-xl p-3 w-32 mx-2";
 
   useEffect(() => {
-    isLoggedIn ? localStorage.getItem("user") : router.push("/login");
+    !isLoggedIn && router.push("/login");
   }, [isLoggedIn]);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleImage = (e) => {
+    setFormData({ ...formData, image: e.target.files[0] });
+  };
 
   return (
     <main className="pt-12 h-screen">
@@ -36,8 +50,156 @@ export default function ForSale({ data = null }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className="flex mt-4 mb-4 flex-col items-center">
-        <h1 className=" text-6xl font-semibold mb-20">For Sale Page</h1>
+      <section className="flex flex-col m-7 pb-12">
+        <h1 className=" text-3xl font-semibold mb-20">Create House Listing</h1>
+
+        <form className="flex flex-col">
+          <div>
+            <h2 className="text-lg font-semibold">Sell / Rent</h2>
+            <button
+              type="button"
+              id="type"
+              value="sell"
+              className={
+                formData.type === "sell" ? activeButton : inactiveButton
+              }
+              onClick={handleClick}
+            >
+              Sell
+            </button>
+            <button
+              type="button"
+              id="type"
+              value="rent"
+              className={
+                formData.type === "rent" ? activeButton : inactiveButton
+              }
+              onClick={handleClick}
+            >
+              Rent
+            </button>
+          </div>
+
+          <div className="flex flex-col mt-10">
+            <label htmlFor="description" className="font-semibold">
+              Description
+            </label>
+            <textarea
+              type="text"
+              id="description"
+              name="description"
+              value={formData.description}
+              className="border-2 border-gray-200 rounded-xl p-3 mt-2 w-3/12"
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="flex flex-row mt-10 gap-8">
+            <div className="flex flex-col w-20">
+              <label className="font-semibold" htmlFor="bathrooms">
+                Bathrooms
+              </label>
+              <input
+                type="number"
+                id="bathrooms"
+                name="bathrooms"
+                value={formData.bathrooms}
+                onChange={handleChange}
+                min={1}
+                className="border-2 border-gray-200 rounded-xl p-3 mt-2"
+              />
+            </div>
+            <div className="flex flex-col w-20">
+              <label className="font-semibold" htmlFor="bedroom">
+                Bedroom
+              </label>
+              <input
+                type="number"
+                id="bedrooms"
+                name="bedrooms"
+                value={formData.bedrooms}
+                onChange={handleChange}
+                min={1}
+                className="border-2 border-gray-200 rounded-xl p-3 mt-2"
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-col mt-10">
+            <label className="font-semibold mb-2" htmlFor="offer">
+              Offer
+            </label>
+            <div className="flex flex-row">
+              <button
+                type="button"
+                name="offer"
+                value={formData.offer}
+                className={formData.offer ? activeButton : inactiveButton}
+                onClick={() => {
+                  setFormData({ ...formData, offer: true });
+                }}
+              >
+                Yes
+              </button>
+              <button
+                type="button"
+                name="offer"
+                value={formData.offer}
+                className={formData.offer ? inactiveButton : activeButton}
+                onClick={() => {
+                  setFormData({ ...formData, offer: false });
+                }}
+              >
+                No
+              </button>
+            </div>
+          </div>
+
+          <div className="flex flex-col mt-10">
+            <label className="font-semibold mb-2" htmlFor="Parking">
+              Parking
+            </label>
+            <div className="flex flex-row">
+              <button
+                type="button"
+                name="offer"
+                value={formData.parking}
+                className={formData.parking ? activeButton : inactiveButton}
+                onClick={() => {
+                  setFormData({ ...formData, parking: true });
+                }}
+              >
+                Yes
+              </button>
+              <button
+                type="button"
+                name="offer"
+                value={formData.parking}
+                className={formData.parking ? inactiveButton : activeButton}
+                onClick={() => {
+                  setFormData({ ...formData, parking: false });
+                }}
+              >
+                No
+              </button>
+            </div>
+          </div>
+
+          <div className="flex flex-col mt-10">
+            <label className="font-semibold" htmlFor="price">
+              Price
+            </label>
+            <input
+              type="number"
+              id="price"
+              name="price"
+              value={formData.price}
+              onChange={handleChange}
+              min={1}
+              className="border-2 border-gray-200 rounded-xl p-3 mt-2 w-3/12"
+            />
+          </div>
+        </form>
       </section>
     </main>
   );
