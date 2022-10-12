@@ -15,10 +15,11 @@ export default function ForSale() {
     price: 1,
     offer: false,
     parking: false,
+    furnished: false,
     bedrooms: 1,
     bathrooms: 1,
-    location: "",
-    image: "",
+    house_location: "",
+    image_url: "",
   });
   const activeButton = "bg-blue-600 rounded-xl p-3 w-32 mx-2 text-white";
   const inactiveButton = "bg-gray-200 rounded-xl p-3 w-32 mx-2";
@@ -162,7 +163,7 @@ export default function ForSale() {
             <div className="flex flex-row">
               <button
                 type="button"
-                name="offer"
+                name="parking"
                 value={formData.parking}
                 className={formData.parking ? activeButton : inactiveButton}
                 onClick={() => {
@@ -173,7 +174,7 @@ export default function ForSale() {
               </button>
               <button
                 type="button"
-                name="offer"
+                name="parking"
                 value={formData.parking}
                 className={formData.parking ? inactiveButton : activeButton}
                 onClick={() => {
@@ -183,6 +184,49 @@ export default function ForSale() {
                 No
               </button>
             </div>
+          </div>
+
+          <div className="flex flex-col mt-10">
+            <label className="font-semibold mb-2" htmlFor="furnished">
+              Furnished
+            </label>
+            <div className="flex flex-row">
+              <button
+                type="button"
+                name="furnished"
+                value={formData.furnished}
+                className={formData.furnished ? activeButton : inactiveButton}
+                onClick={() => {
+                  setFormData({ ...formData, furnished: true });
+                }}
+              >
+                Yes
+              </button>
+              <button
+                type="button"
+                name="furnished"
+                value={formData.furnished}
+                className={formData.furnished ? inactiveButton : activeButton}
+                onClick={() => {
+                  setFormData({ ...formData, furnished: false });
+                }}
+              >
+                No
+              </button>
+            </div>
+          </div>
+
+          <div className="flex flex-col mt-10">
+            <label className="font-semibold mt-10" htmlFor="image">
+              Image
+            </label>
+            <input
+              type="file"
+              id="image"
+              name="image"
+              onChange={handleImage}
+              className="border-2 border-gray-200 rounded-xl p-3 mt-2"
+            />
           </div>
 
           <div className="flex flex-col mt-10">
