@@ -40,7 +40,7 @@ export default function ForSale() {
   };
 
   const handleImage = (e) => {
-    setFormData({ ...formData, image: e.target.files[0] });
+    setFormData({ ...formData, image_url: e.target.files[0] });
   };
 
   return (
