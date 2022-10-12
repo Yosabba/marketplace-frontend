@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  username: "",
+  name: "",
   isLoggedIn: false,
   isLoading: false,
   error: "",
@@ -21,6 +21,7 @@ export const signUserIn = createAsyncThunk(
       if (data) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", data.user);
+        localStorage.setItem("email", data.email);
       }
       return fulfillWithValue(data);
     } catch (error) {
@@ -41,6 +42,7 @@ export const signUserUp = createAsyncThunk(
       if (data) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", data.user);
+        localStorage.setItem("email", data.email);
       }
       return fulfillWithValue(data);
     } catch (error) {
