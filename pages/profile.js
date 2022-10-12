@@ -7,17 +7,18 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 export default function Profile() {
-  const { allHouses, username, isLoggedIn } = useSelector(
+  const { allHouses, isLoggedIn } = useSelector(
     (state) => state.user
   );
   const [name, setName] = useState("");
-  //const name = localStorage.getItem("user");
+  const [email, setEmail] = useState("");
   const router = useRouter();
 
   useEffect(() => {
-    const name = localStorage.getItem("user");
-
-    !isLoggedIn ? router.push("/login") : setName(name);
+    !isLoggedIn ? router.push("/login") : setName(localStorage.getItem("user"));
+    !isLoggedIn
+      ? router.push("/login")
+      : setEmail(localStorage.getItem("email"));
   }, [isLoggedIn]);
 
   const personalDetailClass = "flex flex-row justify-between items-center mb-3";
@@ -44,7 +45,7 @@ export default function Profile() {
 
           <div className="bg-gray-100 rounded-xl p-3 mb-20">
             <p>{name}</p>
-            <p>email</p>
+            <p>{email}</p>
           </div>
         </div>
 
