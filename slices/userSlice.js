@@ -19,8 +19,8 @@ export const signUserIn = createAsyncThunk(
       );
 
       if (data) {
-        localStorage.setItem("token", JSON.stringify(data.token));
-        localStorage.setItem("user", JSON.stringify(data.user));
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", data.user);
       }
       return fulfillWithValue(data);
     } catch (error) {
@@ -39,8 +39,8 @@ export const signUserUp = createAsyncThunk(
       );
 
       if (data) {
-        localStorage.setItem("token", JSON.stringify(data.token));
-        localStorage.setItem("user", JSON.stringify(data.user));
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", data.user);
       }
       return fulfillWithValue(data);
     } catch (error) {
