@@ -43,6 +43,10 @@ export default function ForSale() {
     setFormData({ ...formData, image_url: e.target.files[0] });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  };
+
   return (
     <main className="pt-12 h-screen">
       <Head>
@@ -54,13 +58,14 @@ export default function ForSale() {
       <section className="flex flex-col m-7 pb-12">
         <h1 className=" text-3xl font-semibold mb-20">Create House Listing</h1>
 
-        <form className="flex flex-col">
+        <form onSubmit={handleSubmit} className="flex flex-col">
           <div>
             <h2 className="text-lg font-semibold">Sell / Rent</h2>
             <button
               type="button"
               id="type"
               value="sell"
+              name="type"
               className={
                 formData.type === "sell" ? activeButton : inactiveButton
               }
@@ -72,6 +77,7 @@ export default function ForSale() {
               type="button"
               id="type"
               value="rent"
+              name="type"
               className={
                 formData.type === "rent" ? activeButton : inactiveButton
               }
@@ -225,7 +231,21 @@ export default function ForSale() {
               id="image"
               name="image"
               onChange={handleImage}
-              className="border-2 border-gray-200 rounded-xl p-3 mt-2"
+              className="border-2 border-gray-200 rounded-xl p-3 mt-2 w-3/12"
+            />
+          </div>
+
+          <div className="flex flex-col mt-10">
+            <label htmlFor="house_location" className="font-semibold">
+              Address
+            </label>
+            <textarea
+              type="text"
+              id="house_location"
+              name="house_location"
+              value={formData.house_location}
+              className="border-2 border-gray-200 rounded-xl p-3 mt-2 w-3/12"
+              onChange={handleChange}
             />
           </div>
 
@@ -240,9 +260,14 @@ export default function ForSale() {
               value={formData.price}
               onChange={handleChange}
               min={1}
-              className="border-2 border-gray-200 rounded-xl p-3 mt-2 w-3/12"
+              className="border-2 border-gray-200 rounded-xl p-3 mt-2 w-2/12"
             />
           </div>
+
+          <button
+            type="submit"
+            className="bg-blue-500 text-white font-semibold rounded-xl mt-40 p-4 hover:bg-blue-700"
+          >Create Listing</button>
         </form>
       </section>
     </main>
