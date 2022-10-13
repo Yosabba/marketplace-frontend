@@ -129,26 +129,26 @@ const Header = () => {
             </svg>
 
             <Link href="/houses">
-              <a className={linkStyle} onClick={handleClick}>
+              <a className={linkStyle} onClick={() => setIsClicked(false)}>
                 Buy
               </a>
             </Link>
 
             <Link href="/houses/for-rent">
-              <a className={linkStyle} onClick={handleClick}>
+              <a className={linkStyle} onClick={() => setIsClicked(false)}>
                 Rent
               </a>
             </Link>
 
             <Link href="/for-sale">
-              <a className={linkStyle} onClick={handleClick}>
+              <a className={linkStyle} onClick={() => setIsClicked(false)}>
                 Sell
               </a>
             </Link>
 
             {isLoggedIn && (
               <Link href="/profile">
-                <a className={linkStyle} onClick={handleClick}>
+                <a className={linkStyle} onClick={() => setIsClicked(false)}>
                   My Profile
                 </a>
               </Link>
@@ -169,8 +169,6 @@ const Header = () => {
         )}
       </div>
     </header>
-
-
   );
 };
 
