@@ -57,7 +57,7 @@ export default function Home() {
       />
 
       <section className="flex mt-4 mb-4 flex-col items-center">
-        <h1 className=" text-6xl font-semibold pb-4">Create an account</h1>
+        <h1 className=" laptop:text-6xl mobile:text-4xl capitalize font-semibold pb-4">Create an account</h1>
         <br />
         <form onSubmit={onSubmit} className="flex flex-col items-center">
           <input
