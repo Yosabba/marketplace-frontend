@@ -27,7 +27,7 @@ export default function ForRent({ data }) {
       </Head>
 
       <section className="flex mt-4 mb-4 flex-col items-center">
-        <h1 className=" text-6xl font-semibold mb-20">Places for rent</h1>
+        <h1 className=" laptop:text-6xl mobile:text-5xl capitalize font-semibold mb-20">Places for rent</h1>
       </section>
 
       <section className="flex flex-row flex-wrap justify-start ml-4 gap-8">

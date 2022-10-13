@@ -84,7 +84,7 @@ export default function SignIn() {
       )}
 
       <section className="flex mt-4 mb-4 flex-col items-center">
-        <h1 className=" text-6xl font-semibold mb-20">Welcome Back!</h1>
+        <h1 className=" laptop:text-6xl mobile:text-5xl font-semibold mb-14">Welcome Back!</h1>
 
         <form onSubmit={onSubmit} className="flex flex-col items-center">
           <input
@@ -127,7 +127,7 @@ export default function SignIn() {
         </form>
       </section>
 
-      {/* <section className="flex flex-row justify-center pb-4">
+      <section className="flex flex-row justify-center pb-4">
         <div className=" border-b-2 w-1/4 border-gray-300 self-center "></div>
         <p className="px-4 self-center text-gray-500">or</p>
         <div className="border-b-2 w-1/4 border-gray-300 self-center"></div>
@@ -160,7 +160,7 @@ export default function SignIn() {
             className="cursor-pointer"
           ></Image>
         </div>
-      </section> */}
+      </section>
     </main>
   );
 }
