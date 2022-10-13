@@ -11,7 +11,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const linkStyle =
-    "m-2 capitalize transition duration-300 ease-in-out hover:text-gray-600 text-lg mobile:text-3xl mobile:font-semibold mobile:p-4";
+    "m-2 capitalize transition duration-300 ease-in-out hover:text-gray-600 laptop:text-lg mobile:text-3xl mobile:font-semibold mobile:p-2";
   const btnStyle =
     "bg-blue-700 p-2 rounded-lg text-slate-200 ml-4 transition duration-500 ease-in-out hover:bg-blue-800 ";
 
@@ -71,12 +71,12 @@ const Header = () => {
     //       </Link>
     //     )}
     //   </div>
-    <header className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded">
+    <header className="bg-white border-gray-200 px-2 mobile:px-4 py-2.5 rounded">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <button
           data-collapse-toggle="navbar-default"
           type="button"
-          className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg tablet:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
           aria-controls="navbar-default"
           aria-expanded="false"
           onClick={() => {
@@ -106,17 +106,17 @@ const Header = () => {
           className={
             isClicked
               ? `h-full w-full right-0 top-0 fixed bg-white z-50`
-              : `hidden w-full md:block md:w-auto`
+              : `hidden w-full tablet:block tablet:w-auto`
           }
         >
-          <ul className="flex flex-col justify-center items-center p-4 mt-4 md:flex-row md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
+          <ul className="flex flex-col justify-center items-center p-4 mt-4 tablet:flex-row tablet:mt-0 tablet:text-sm tablet:font-medium tablet:border-0 tablet:bg-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="#000000"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="#000000"
-              className="w-6 h-6 right-0 fixed top-0 mt-4 mr-4 md:hidden"
+              className="w-6 h-6 right-0 fixed top-0 mt-4 mr-4 tablet:hidden"
               onClick={() => {
                 setIsClicked(!isClicked);
               }}
@@ -170,7 +170,7 @@ const Header = () => {
       </div>
     </header>
 
-    // </header>
+
   );
 };
 
