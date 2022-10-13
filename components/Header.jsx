@@ -11,7 +11,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const linkStyle =
-    "m-2 capitalize transition duration-300 ease-in-out hover:text-gray-600 text-lg";
+    "m-2 capitalize transition duration-300 ease-in-out hover:text-gray-600 text-lg mobile:text-3xl mobile:font-semibold mobile:p-4";
   const btnStyle =
     "bg-blue-700 p-2 rounded-lg text-slate-200 ml-4 transition duration-500 ease-in-out hover:bg-blue-800 ";
 
@@ -21,12 +21,16 @@ const Header = () => {
     user !== null && dispatch(logUserIn());
   }, [isLoggedIn]);
 
-  const handleClick = (e) => {
+  const handleLogOut = (e) => {
     e.preventDefault();
 
     localStorage.clear();
     router.push("/");
     dispatch(logUserOut());
+  };
+
+  const handleClick = () => {
+    setIsClicked(!isClicked);
   };
 
   return (
@@ -125,27 +129,35 @@ const Header = () => {
             </svg>
 
             <Link href="/houses">
-              <a className={linkStyle}>Buy</a>
+              <a className={linkStyle} onClick={handleClick}>
+                Buy
+              </a>
             </Link>
 
             <Link href="/houses/for-rent">
-              <a className={linkStyle}>Rent</a>
+              <a className={linkStyle} onClick={handleClick}>
+                Rent
+              </a>
             </Link>
 
             <Link href="/for-sale">
-              <a className={linkStyle}>Sell</a>
+              <a className={linkStyle} onClick={handleClick}>
+                Sell
+              </a>
             </Link>
 
             {isLoggedIn && (
               <Link href="/profile">
-                <a className={linkStyle}>My Profile</a>
+                <a className={linkStyle} onClick={handleClick}>
+                  My Profile
+                </a>
               </Link>
             )}
           </ul>
         </div>
         {isLoggedIn ? (
           <button
-            onClick={handleClick}
+            onClick={handleLogOut}
             className="bg-blue-700 text-white rounded-xl p-2 mx-3 hover:bg-blue-600 hover:cursor-pointer"
           >
             Sign Out
