@@ -28,15 +28,18 @@ export default function Home() {
 
       <section className="flex mt-4 pb-20 flex-col items-center">
         <div className="bg-[url('../public/house-community.jpg')] bg-cover w-full h-[65vh]">
-          <div className="flex flex-col items-center justify-center h-full">
-            <h1 className="laptop:text-5xl font-bold text-white mobile:text-4xl">
-              House Marketplace
-            </h1>
-            <p className="laptop:text-2xl mobile:text-lg text-white mb-6">
-              Find your dream house in a few clicks
-            </p>
-            <HomeForm />
+          <div className="bg-black bg-opacity-30 w-full h-full">
+            <div className="flex flex-col items-center justify-center h-full">
+              <h1 className="laptop:text-5xl font-bold text-white mobile:text-4xl">
+                House Marketplace
+              </h1>
+              <p className="laptop:text-2xl mobile:text-lg text-white mb-6">
+                Find your dream house in a few clicks
+              </p>
+              <HomeForm />
+            </div>
           </div>
+          <div className="flex flex-col items-center justify-center h-full"></div>
         </div>
       </section>
 
