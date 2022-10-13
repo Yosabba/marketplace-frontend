@@ -9,6 +9,28 @@ const initialState = {
   allHouses: [],
 };
 
+export const createHouseListing = createAsyncThunk(
+  "user/createHouseListing",
+  async (house, { rejectWithValue, fulfillWithValue }) => {
+    try {
+      const token = localStorage.getItem("token");
+      const { data } = await axios.post(
+        "https://marketplace-backend-production-b296.up.railway.app/houses",
+        house,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      return fulfillWithValue(data);
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const signUserIn = createAsyncThunk(
   "user/login",
   async (user, { rejectWithValue, fulfillWithValue }) => {
