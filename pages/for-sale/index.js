@@ -2,13 +2,20 @@ import Head from "next/head";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Zoom } from "react-toastify";
 import { useRouter } from "next/router";
+import { unwrapResult } from "@reduxjs/toolkit";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { createHouseListing } from "../../slices/userSlice";
+
 
 export default function ForSale() {
   const router = useRouter();
   const { isLoggedIn } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     type: "rent",
     description: "",
@@ -45,6 +52,34 @@ export default function ForSale() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const response = await dispatch(createHouseListing(formData));
+      unwrapResult(response);
+
+      setFormData({
+        type: "rent",
+        description: "",
+        price: 1,
+        offer: false,
+        parking: false,
+        furnished: false,
+        bedrooms: 1,
+        bathrooms: 1,
+        house_location: "",
+        image_url: "",
+      });
+
+      toast.success("Listing Created", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    } catch (error) {
+      console.log(error);
+
+      toast.error(`Something went wrong`, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
   };
 
   return (
@@ -55,10 +90,17 @@ export default function ForSale() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <ToastContainer
+        pauseOnHover={false}
+        transition={Zoom}
+        hideProgressBar={true}
+        autoClose={2000}
+      />
+
       <section className="flex flex-col m-7 pb-12">
         <h1 className=" text-3xl font-semibold mb-20">Create House Listing</h1>
 
-        <form onSubmit={handleSubmit} className="flex flex-col">
+        <form onSubmit={handleSubmit} className="flex flex-col justify-center">
           <div>
             <h2 className="text-lg font-semibold">Sell / Rent</h2>
             <button
@@ -266,8 +308,10 @@ export default function ForSale() {
 
           <button
             type="submit"
-            className="bg-blue-500 text-white font-semibold rounded-xl mt-40 p-4 hover:bg-blue-700"
-          >Create Listing</button>
+            className="bg-blue-500 text-white font-semibold rounded-xl mt-40 p-4 hover:bg-blue-700 transition duration-300 ease-in-out "
+          >
+            Create Listing
+          </button>
         </form>
       </section>
     </main>
