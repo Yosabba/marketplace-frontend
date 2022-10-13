@@ -138,7 +138,7 @@ export default function ForSale() {
               id="description"
               name="description"
               value={formData.description}
-              className="border-2 border-gray-200 rounded-xl p-3 mt-2 w-3/12"
+              className="border-2 border-gray-200 rounded-xl p-3 mt-2 laptop:w-3/12"
               onChange={handleChange}
             />
           </div>
@@ -273,7 +273,7 @@ export default function ForSale() {
               id="image"
               name="image"
               onChange={handleImage}
-              className="border-2 border-gray-200 rounded-xl p-3 mt-2 w-3/12"
+              className="border-2 border-gray-200 rounded-xl p-3 mt-2 laptop:w-3/12"
             />
           </div>
 
@@ -286,7 +286,7 @@ export default function ForSale() {
               id="house_location"
               name="house_location"
               value={formData.house_location}
-              className="border-2 border-gray-200 rounded-xl p-3 mt-2 w-3/12"
+              className="border-2 border-gray-200 rounded-xl p-3 mt-2 laptop:w-3/12"
               onChange={handleChange}
             />
           </div>
@@ -302,7 +302,7 @@ export default function ForSale() {
               value={formData.price}
               onChange={handleChange}
               min={1}
-              className="border-2 border-gray-200 rounded-xl p-3 mt-2 w-2/12"
+              className="border-2 border-gray-200 rounded-xl p-3 mt-2 laptop:w-2/12"
             />
           </div>
 

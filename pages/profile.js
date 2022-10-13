@@ -7,9 +7,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 export default function Profile() {
-  const { allHouses, isLoggedIn } = useSelector(
-    (state) => state.user
-  );
+  const { allHouses, isLoggedIn } = useSelector((state) => state.user);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const router = useRouter();
@@ -30,12 +28,12 @@ export default function Profile() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className=" m-8 w-1/2 ">
+      <section className=" mx-3 my-8 ">
         <div className="flex flex-row justify-between gap-3 flex-wrap mb-20">
           <h1 className=" text-4xl font-bold ">My Profile</h1>
         </div>
 
-        <div className=" w-1/2 ">
+        <div className=" laptop:w-3/12 ">
           <div className={personalDetailClass}>
             <p className="capitalize text-slate-600">personal details</p>
             <p className="text-sm text-blue-700 font-bold hover:cursor-pointer">
@@ -49,7 +47,7 @@ export default function Profile() {
           </div>
         </div>
 
-        <div className="bg-gray-100 rounded-xl p-3 mb-20 flex flex-row w-1/2 justify-between hover:cursor-pointer hover:bg-gray-200 transition duration-500 ease-in-out">
+        <div className="bg-gray-100 rounded-xl p-3 mb-20 flex flex-row laptop:w-3/12 justify-between hover:cursor-pointer hover:bg-gray-200 transition duration-500 ease-in-out">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -78,15 +76,16 @@ export default function Profile() {
           </svg>
         </div>
       </section>
-      <h1 className="text-xl font-bold ml-6">Your Listings</h1>
-      <section className=" flex flex-col">
+      <h1 className="text-xl font-bold m-6">Your Listings</h1>
+      <section className=" flex flex-col flex-wrap">
         {allHouses.map((house) => {
           return (
             <div
               key={house.id}
-              className=" inline-flex justify-between items-center mx-8 "
+              className=" laptop:inline-flex laptop:justify-between laptop:items-center laptop:mr-24 mobile:flex mobile:flex-col mobile:justify-center mobile:items-center"
             >
               <HouseCard house={house} />
+              
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"

@@ -43,7 +43,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="grid grid-cols-auto-fit justify-items-center mx-10 pb-8">
+      <section className="grid grid-cols-auto-fit justify-items-center mx-4 pb-8">
         <HomeCards
           name="Rent a house"
           desc="Find a new place to live with a ton of listings and options. You won't

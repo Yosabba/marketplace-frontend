@@ -56,7 +56,7 @@ const HomeForm = () => {
           <input
             type="search"
             id="default-search"
-            className="block p-4 pl-10 w-96 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-gray-300 focus:outline-gray-200"
+            className="block p-4 pl-10 laptop:w-96 mobile:w-80 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-gray-300 focus:outline-gray-200"
             placeholder="City, State"
             onChange={handleChange}
             value={cityState}

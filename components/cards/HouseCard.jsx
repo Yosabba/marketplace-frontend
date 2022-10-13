@@ -9,7 +9,7 @@ const HouseCard = ({ house }) => {
   }
 
   return (
-    <section className="flex flex-col rounded-lg transition duration-500 ease-in-out cursor-pointer w-80 min-h-[30vh] p-6">
+    <section className="flex flex-col rounded-lg transition duration-500 ease-in-out cursor-pointer w-96 min-h-[30vh] p-6">
       <Image
         src={house.image_url}
         alt="image of the house property"
@@ -26,7 +26,7 @@ const HouseCard = ({ house }) => {
         <div className="inline-flex flex-row items-start justify-center rounded-md">
           <button
             type="button"
-            className="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-900 rounded-l-lg"
+            className="inline-flex items-center py-2 px-4 laptop:text-sm mobile:text-xs font-medium text-gray-900 rounded-l-lg"
           >
             <BedSvg />
             {house.bedroom} bd
