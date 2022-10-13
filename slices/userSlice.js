@@ -19,7 +19,7 @@ export const createHouseListing = createAsyncThunk(
         house,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `${token}`,
           },
         }
       );
@@ -116,6 +116,18 @@ export const userSlice = createSlice({
       })
       .addCase(signUserUp.rejected, (state, action) => {
         state.isLoggedIn = false;
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
+      .addCase(createHouseListing.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createHouseListing.fulfilled, (state, action) => {
+        state.allHouses = action.payload;
+        state.isLoading = false;
+        state.error = "";
+      })
+      .addCase(createHouseListing.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
       });
