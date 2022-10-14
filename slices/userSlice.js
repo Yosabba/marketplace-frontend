@@ -79,8 +79,7 @@ export const searchHouses = createAsyncThunk(
   async (query, { rejectWithValue, fulfillWithValue }) => {
     try {
       const { data } = await axios.get(
-        // `https://marketplace-backend-production-b296.up.railway.app/houses?cityState=${query}`
-        `http://localhost:5000/houses?cityState=${query}`
+        `https://marketplace-backend-production-b296.up.railway.app/houses?cityState=${query}`
       );
 
       return fulfillWithValue(data);
