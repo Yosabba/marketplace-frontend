@@ -1,24 +1,30 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { searchHouses } from "../../slices/userSlice";
+import { unwrapResult } from "@reduxjs/toolkit";
+
 const HomeForm = () => {
   const [cityState, setCityState] = useState("");
   const router = useRouter();
+
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (cityState === "") {
       console.log("Please enter a city and state");
-      return;
     } else {
-      const res = await axios.get(
-        `https://marketplace-backend-production-b296.up.railway.app/houses?cityState=${cityState}`
-      );
-      router.push({
-        pathname: "/houses",
-        query: { houseData: res.data },
-      });
+      try {
+        const response = await dispatch(searchHouses(cityState));
+        unwrapResult(response);
+        localStorage.setItem("cityState", cityState);
+        setCityState("");
+        router.push("/search-houses");
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 

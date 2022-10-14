@@ -6,6 +6,7 @@ const initialState = {
   isLoggedIn: false,
   isLoading: false,
   error: "",
+  searchHouses: [],
   allHouses: [],
 };
 
@@ -73,6 +74,22 @@ export const signUserUp = createAsyncThunk(
   }
 );
 
+export const searchHouses = createAsyncThunk(
+  "user/searchHouses",
+  async (query, { rejectWithValue, fulfillWithValue }) => {
+    try {
+      const { data } = await axios.get(
+        // `https://marketplace-backend-production-b296.up.railway.app/houses?cityState=${query}`
+        `http://localhost:5000/houses?cityState=${query}`
+      );
+
+      return fulfillWithValue(data);
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 export const userSlice = createSlice({
   name: "user",
   initialState,
@@ -128,6 +145,18 @@ export const userSlice = createSlice({
         state.error = "";
       })
       .addCase(createHouseListing.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
+      .addCase(searchHouses.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(searchHouses.fulfilled, (state, action) => {
+        state.searchHouses = action.payload;
+        state.isLoading = false;
+        state.error = "";
+      })
+      .addCase(searchHouses.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
       });
