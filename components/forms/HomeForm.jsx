@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-import { searchHouses } from "../../slices/userSlice";
+import { searchHouses, addSearchParams } from "../../slices/userSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 
 const HomeForm = () => {
@@ -17,13 +17,14 @@ const HomeForm = () => {
       console.log("Please enter a city and state");
     } else {
       try {
+        dispatch(addSearchParams(cityState));
         const response = await dispatch(searchHouses(cityState));
         unwrapResult(response);
         localStorage.setItem("cityState", cityState);
-        setCityState("");
         router.push("/search-houses");
       } catch (err) {
         console.log(err);
+        
       }
     }
   };
