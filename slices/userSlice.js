@@ -6,6 +6,7 @@ const initialState = {
   isLoggedIn: false,
   isLoading: false,
   error: "",
+  searchParams: "",
   searchHouses: [],
   allHouses: [],
 };
@@ -102,6 +103,9 @@ export const userSlice = createSlice({
     addHouse: (state, action) => {
       state.allHouses = action.payload;
     },
+    addSearchParams: (state, action) => {
+      state.searchParams = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -162,6 +166,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { logUserOut, logUserIn, addHouse } = userSlice.actions;
+export const { logUserOut, logUserIn, addHouse, addSearchParams } =
+  userSlice.actions;
 
 export default userSlice.reducer;
