@@ -3,17 +3,23 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import HouseCard from "../components/cards/HouseCard";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import SyncLoader from "react-spinners/SyncLoader";
 
 export default function SearchedHouses() {
-  const [searchParams, setSearchParams] = useState("");
-  const { searchHouses } = useSelector((state) => state.user);
+  const { searchHouses, searchParams } = useSelector((state) => state.user);
+  const [cardIsClicked, setCardIsClicked] = useState(false);
+
+  const handleClick = (e) => {
+    setCardIsClicked(true);
+  };
   const router = useRouter();
 
   useEffect(() => {
-    searchHouses.length === 0
+    searchParams === "" && localStorage.getItem("cityState") === ""
       ? router.push("/")
-      : setSearchParams(localStorage.getItem("cityState"));
-  }, [searchHouses]);
+      : null;
+  }, []);
 
   return (
     <main>
@@ -23,10 +29,26 @@ export default function SearchedHouses() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className="text-center text-3xl">{`Houses in ${searchParams}`}</h1>
-      {searchHouses.map((house) => (
-        <HouseCard key={house.id} house={house} />
-      ))}
+      <h1 className="text-center text-3xl">
+        {searchParams ? `Houses in ${searchParams}` : null}
+      </h1>
+      {searchHouses.length <= 0 ? (
+        <h1 className="text-center text-3xl mt-20">No houses found</h1>
+      ) : (
+        searchHouses.map((house) => (
+          <Link key={house.id} href={`/houses/${house.id}`}>
+            <a onClick={handleClick}>
+              <HouseCard house={house} />
+            </a>
+          </Link>
+        ))
+      )}
+
+      {cardIsClicked && (
+        <div className=" flex flex-col justify-center items-center h-full w-full fixed top-0 left-0 bg-white opacity-80">
+          <SyncLoader color={"#00308F"} loading={true} size={20} />
+        </div>
+      )}
     </main>
   );
 }
